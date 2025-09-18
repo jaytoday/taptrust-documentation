@@ -1,0 +1,15 @@
+<svg width="180" height="24" viewBox="0 0 180 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<!-- Version 2: Modern Shield + Medium Weight Text (Dark) -->
+<!-- Blue Shield Icon (no checkmark) -->
+<path d="M12 2L4 6V11C4 16.55 7.84 21.74 12 23C16.16 21.74 20 16.55 20 11V6L12 2Z" fill="url(#paint0_linear_shield)"/>
+
+<!-- TapTrust Text - Single Line, Modern (Dark Mode) -->
+<text x="32" y="15" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#F3F4F6">TapTrust</text>
+
+<defs>
+<linearGradient id="paint0_linear_shield" x1="12" y1="2" x2="12" y2="23" gradientUnits="userSpaceOnUse">
+<stop stop-color="#3B82F6"/>
+<stop offset="1" stop-color="#1E40AF"/>
+</linearGradient>
+</defs>
+</svg>

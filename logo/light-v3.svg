@@ -1,0 +1,23 @@
+<svg width="170" height="24" viewBox="0 0 170 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<!-- Version 3: Elegant Shield + Refined Text -->
+<!-- Blue Shield Icon (no checkmark) with subtle glow -->
+<path d="M12 2L4 6V11C4 16.55 7.84 21.74 12 23C16.16 21.74 20 16.55 20 11V6L12 2Z" fill="url(#paint0_linear_shield)" filter="url(#glow)"/>
+
+<!-- TapTrust Text - Single Line, Elegant -->
+<text x="30" y="15.5" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="650" fill="#0F172A" letter-spacing="-0.02em">TapTrust</text>
+
+<defs>
+<linearGradient id="paint0_linear_shield" x1="12" y1="2" x2="12" y2="23" gradientUnits="userSpaceOnUse">
+<stop stop-color="#3B82F6"/>
+<stop offset="0.5" stop-color="#2563EB"/>
+<stop offset="1" stop-color="#1E40AF"/>
+</linearGradient>
+<filter id="glow" x="2" y="0" width="20" height="25">
+<feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+<feMerge> 
+<feMergeNode in="coloredBlur"/>
+<feMergeNode in="SourceGraphic"/>
+</feMerge>
+</filter>
+</defs>
+</svg>

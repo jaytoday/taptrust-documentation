@@ -1,80 +1,131 @@
 ---
-title: "Quickstart"
-description: "Start building awesome documentation in minutes"
+title: "Technical Overview"
+description: "Understanding TapTrust's privacy-first architecture with secure enclaves"
 ---
 
-## Get started in three steps
+## How TapTrust Works
 
-Get your documentation site running locally and make your first customization.
+TapTrust uses a combination of cutting-edge technologies to provide truly private AI conversations. This technical overview explains the architecture that makes it possible.
 
-### Step 1: Set up your local environment
+## Core Technologies
+
+### Secure Enclaves for Authentication
+
+TapTrust uses [Privy](https://privy.io) for secure, privacy-focused authentication. Privy provides:
+
+- **Cross-platform login** with email and Google OAuth
+- **Deterministic key derivation** from user identity
+- **No wallet complexity** - simplified authentication flow
+- **Privacy-first design** that doesn't collect unnecessary data
+
+### Secure AI Inference
+
+For AI processing, TapTrust integrates with [Tinfoil](https://tinfoil.sh), which provides:
+
+- **Trusted Execution Environments (TEEs)** for AI inference
+- **Hardware-level isolation** protecting conversations during processing
+- **Verifiable computing** with cryptographic proof of secure execution
+- **No data persistence** - conversations are never stored on AI servers
+
+## Privacy Architecture
+
+### Secure Architecture Overview
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Your Device   │    │   TapTrust      │    │   Secure AI     │
+│                 │    │   Servers       │    │   (Tinfoil)     │
+│ • Client App    │◄──►│                 │    │                 │
+│ • Encryption    │    │ • Encrypted     │    │ • TEE/Enclave   │
+│ • Key Derivation│    │   Storage       │    │ • Private       │
+│ • Authentication│    │ • Metadata Only │    │   Inference     │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+         │                       │                       ▲
+         │                       │                       │
+         └───────────────────────┼───────────────────────┘
+                                 │           Direct Encrypted
+                                 ▼           Connection
+                    ┌─────────────────┐
+                    │  Authentication │
+                    │     (Privy)     │
+                    │                 │
+                    │ • Identity      │
+                    │ • Key Material  │
+                    └─────────────────┘
+```
+
+### End-to-End Encryption
 
 <AccordionGroup>
-  <Accordion icon="copy" title="Clone your docs locally">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
-    
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
+  <Accordion icon="lock" title="Client-Side Encryption">
+    All messages are encrypted on your device using AES-GCM encryption before being transmitted. The encryption key is derived deterministically from your user identity, ensuring the same key is available on all your devices.
   </Accordion>
-  <Accordion icon="rectangle-terminal" title="Start the preview server">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live!
-    
-    <Tip>Your preview updates automatically as you edit files.</Tip>
+  <Accordion icon="key" title="Zero-Knowledge Storage">
+    TapTrust servers store only encrypted message blobs. Even with full database access, your conversations remain unreadable without your personal encryption key.
+  </Accordion>
+  <Accordion icon="shield" title="Secure Processing">
+    When AI inference is needed, your encrypted messages are processed within secure enclaves that prevent even the cloud provider from accessing the plaintext data.
   </Accordion>
 </AccordionGroup>
 
-### Step 2: Deploy your changes
+### Data Flow
 
 <AccordionGroup>
-  <Accordion icon="github" title="Install our GitHub app">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
-    
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-</Accordion>
-<Accordion icon="palette" title="Update your site name and colors">
-    For a first change, let's update the name and colors of your docs site.
-
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
-
-    <Tip>Try changing the primary color to see an immediate difference!</Tip>
+  <Accordion icon="user" title="1. Authentication">
+    You authenticate with Privy using email or Google. A deterministic encryption key is derived from your user ID, ensuring consistent access across devices.
+  </Accordion>
+  <Accordion icon="message" title="2. Message Encryption">
+    Your message is encrypted on your device before being saved to TapTrust's encrypted storage. The server never sees your plaintext message.
+  </Accordion>
+  <Accordion icon="cpu" title="3. AI Processing">
+    A short-lived API key is generated to access Tinfoil's secure AI inference. Your encrypted message is processed within a trusted execution environment.
+  </Accordion>
+  <Accordion icon="reply" title="4. Secure Response">
+    The AI response is generated within the secure enclave and encrypted before being sent back to your device, where it's decrypted and displayed.
   </Accordion>
 </AccordionGroup>
 
-### Step 3: Go live
-
-<Accordion icon="rocket" title="Publish your docs">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments!
-</Accordion>
-
-## Next steps
-
-Now that you have your docs running, explore these key features:
+## Technical Benefits
 
 <CardGroup cols={2}>
-
-<Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-  Learn MDX syntax and start writing your documentation.
-</Card>
-
-<Card title="Customize style" icon="palette" href="/essentials/settings">
-  Make your docs match your brand perfectly.
-</Card>
-
-<Card title="Add code examples" icon="square-code" href="/essentials/code">
-  Include syntax-highlighted code blocks.
-</Card>
-
-<Card title="API documentation" icon="code" href="/api-reference/introduction">
-  Auto-generate API docs from OpenAPI specs.
-</Card>
-
+  <Card
+    title="Hardware-Level Security"
+    icon="microchip"
+  >
+    Secure enclaves provide hardware-level isolation, making it computationally infeasible to extract your data.
+  </Card>
+  <Card
+    title="Verifiable Privacy"
+    icon="certificate"
+  >
+    The architecture provides cryptographic proof that your data cannot be accessed by anyone except you.
+  </Card>
+  <Card
+    title="Cross-Device Sync"
+    icon="sync"
+  >
+    Deterministic key derivation allows secure access to your conversations from any device without key exchange.
+  </Card>
+  <Card
+    title="Short-Lived Credentials"
+    icon="clock"
+  >
+    API keys expire in 60 seconds, minimizing the window of exposure if credentials are compromised.
+  </Card>
 </CardGroup>
 
-<Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
-</Note>
+## Privacy Guarantees
+
+### What TapTrust Cannot See
+- Your conversation content
+- Your message attachments
+- Your AI responses
+- Your search queries or tool usage
+
+### What TapTrust Can See
+- Encrypted message blobs (unreadable without your key)
+- Message timestamps and metadata
+- Usage statistics and error logs
+- Billing and account information
+
+This architecture ensures that even in the event of a data breach or legal request, your conversations remain private and secure.
