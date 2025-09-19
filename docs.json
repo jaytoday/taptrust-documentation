@@ -17,8 +17,14 @@
             "group": "Getting Started",
             "pages": [
               "index",
-              "quickstart",
+              "technical-overview",
               "faq"
+            ]
+          },
+          {
+            "group": "Security & Privacy",
+            "pages": [
+              "file-encryption"
             ]
           }
         ]
