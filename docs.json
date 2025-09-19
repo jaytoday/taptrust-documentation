@@ -16,15 +16,14 @@
           {
             "group": "Getting Started",
             "pages": [
-              "index",
-              "technical-overview",
-              "faq"
+              "index"
             ]
           },
           {
-            "group": "Security & Privacy",
+            "group": "More Information",
             "pages": [
-              "file-encryption"
+              "technical-overview",
+              "faq"
             ]
           }
         ]
