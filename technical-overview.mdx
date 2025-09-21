@@ -13,7 +13,7 @@ TapTrust uses a combination of cutting-edge technologies to provide truly privat
 
 TapTrust uses [Privy](https://privy.io) for secure, privacy-focused authentication. Privy provides:
 
-- **Cross-platform login** with email and Google OAuth
+- **Cross-platform login** with email, phone number and Google OAuth
 - **Deterministic key derivation** from user identity
 - **No wallet complexity** - simplified authentication flow
 - **Privacy-first design** that doesn't collect unnecessary data
@@ -37,8 +37,8 @@ For AI processing, TapTrust integrates with [Tinfoil](https://tinfoil.sh), which
 │                 │    │   Servers       │    │   (Tinfoil)     │
 │ • Client App    │◄──►│                 │    │                 │
 │ • Encryption    │    │ • Encrypted     │    │ • TEE/Enclave   │
-│ • Key Derivation│    │   Storage       │    │ • Private       │
-│ • Authentication│    │ • Metadata Only │    │   Inference     │
+│ • Key Derivation│    │   Data Storage  │    │ • Private       │
+│ • Authentication│    │                 │    │   Inference     │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
          │                       │                       ▲
          │                       │                       │
@@ -46,11 +46,11 @@ For AI processing, TapTrust integrates with [Tinfoil](https://tinfoil.sh), which
                                  │           Direct Encrypted
                                  ▼           Connection
                     ┌─────────────────┐
-                    │  Authentication │
+                    │  Secure Auth│
                     │     (Privy)     │
                     │                 │
-                    │ • Identity      │
-                    │ • Key Material  │
+                    │ • TEE/Enclave   │
+                    │ • Generates Key │
                     └─────────────────┘
 ```
 
