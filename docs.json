@@ -24,6 +24,16 @@
             "pages": [
               "technical-overview",
               "faq"
+            ],
+            "links": [
+              {
+                "label": "Tinfoil",
+                "href": "https://www.tinfoil.sh"
+              },
+              {
+                "label": "Privy",
+                "href": "https://www.privy.io"
+              }
             ]
           }
         ]
